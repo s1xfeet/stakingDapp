@@ -8,9 +8,32 @@ contract Staker {
 
   ExampleExternalContract public exampleExternalContract;
 
+  mapping(address => uint256) public balances;
+
+  mapping(address => uint256) public deposit;
+
+  uint256 public constant rewardRatePerSecond = 0.1 ether; 
+  uint256 public withdrawalDeadline = block.timestamp + 120 seconds; 
+  uint256 public claimDeadline = block.timestamp + 240 seconds; 
+  uint256 public currentBlock = 0;
+
+
   constructor(address exampleExternalContractAddress) {
       exampleExternalContract = ExampleExternalContract(exampleExternalContractAddress);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Collect funds in a payable `stake()` function and track individual `balances` with a mapping:
   // ( Make sure to add a `Stake(address,uint256)` event and emit it for the frontend <List/> display )
